@@ -68,10 +68,10 @@ web_modules/
 
 # Output of 'npm pack'
 *.tgz
-
+.angular
 # Yarn Integrity file
 .yarn-integrity
-
+.vscode
 # dotenv environment variable files
 .env
 .env.development.local
