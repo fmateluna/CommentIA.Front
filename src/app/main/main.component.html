@@ -1,0 +1,63 @@
+<!-- src/app/main/main.component.html -->
+<div class="container">
+    
+    <div class="card mb-3">
+      <div class="card-header">
+        <h4>IA</h4>
+      </div>
+      <div class="card-body">
+        <div class="form-check mb-3">
+
+          <input class="form-check-input" type="checkbox" id="enableChatGPT" [(ngModel)]="enableChatGPT">
+          <label class="form-check-label" for="enableChatGPT">
+            Habilitar chatgpt
+          </label>
+        </div>
+        <div class="mb-3" *ngIf="enableChatGPT">
+          <label for="apiKey" class="form-label">API KEY</label>
+          <input type="text" class="form-control" id="apiKey" placeholder="********" [(ngModel)]="apiKey">
+        </div>
+        <div class="mb-3" *ngIf="enableChatGPT">
+          <label for="promptPersonality" class="form-label">Prompt : Personalidad</label>
+          <textarea class="form-control" id="promptPersonality" rows="2" [(ngModel)]="promptPersonality"></textarea>
+        </div>
+        <div class="mb-3" *ngIf="enableChatGPT">
+          <label for="promptComment" class="form-label">Prompt : Comentario</label>
+          <textarea class="form-control" id="promptComment" rows="2" [(ngModel)]="promptComment"></textarea>
+        </div>
+      </div>
+    </div>
+  
+    <div class="card mb-3">
+      <div class="card-header">
+        <h4>Youtube</h4>
+      </div>
+      <div class="card-body">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="URL PlayList" aria-label="URL PlayList" [(ngModel)]="urlPlaylist">
+          <button class="btn btn-primary" type="button" (click)="loadPlaylist()">cargar</button>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">URL</th>
+              <th scope="col">Comentario</th>
+              <th scope="col">Seleccionar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let video of videos">
+              <td>{{ video.title }}</td>
+              <td>{{ video.comment }}</td>
+              <td><input class="form-check-input" type="checkbox" [(ngModel)]="video.selected"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="d-grid">
+      <button class="btn btn-primary" type="button" (click)="submitComments()">enviar comentarios</button>
+    </div>
+  </div>
+  
